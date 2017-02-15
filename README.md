@@ -1,6 +1,7 @@
-# docker-wordpress-wp-cli-xdebug
+# docker-wordpress-wp-cli-xdebug (with tcpdump for debugging)
 
 This is an image based off of [Conetix's docker-wordpress-wp-cli](https://github.com/conetix/docker-wordpress-wp-cli).
+Forked from [Johnrom's docker-wordpress-wp-cli-xdebug](https://github.com/johnrom/docker-wordpress-wp-cli-xdebug). Thanks!
 
 This repository adds xDebug support.
 
@@ -8,27 +9,21 @@ Additionally, I've removed an opcache configuration file that the WordPress imag
 
 **This is super untested.** Do not use in production. I built this on Windows so permissions are not correct. Maybe one day I will fix it.
 
-To use, you'll have to pass a variable to XDebug with your IP Address. Please note, this is the IP address of your machine, not the docker VM. It is generally a 192.168.* address. You can find it a number of ways, one is to check the Virtual Host-Only Network in VirtualBox and look at the gateway IP. Another way is to get the IP address of eth1 on the Virtual Machine, and replace the last octal with "1".
+To use, you'll have to pass a variable to XDebug with your IP Address. Please note, this is the IP address of your machine, not the docker VM. It is generally a 192.168.\* address. You can find it a number of ways, usually it can be found somewhere in the `ifconfig` data.
 
-`192.168.99.100 => 192.168.99.1`
-
-Are you super lazy? Try the following within Docker Terminal, replacing default with your machine name if necessary:
-
-`echo $(docker-machine ip default) | sed 's/\.[0-9]*$/.1/'`
-
-Example: `192.168.99.1`
+Example: `192.168.1.100`
 
 Are you the only one developing your project? Try:
 
 ```
 wp_site:
-  image: johnrom/docker-wordpress-wp-cli-xdebug
+  image: eceleste/docker-wordpress-wp-cli-xdebug
   ... [ your regular configuration ]
   environment:
-    XDEBUG_CONFIG: remote_host=[your.local.ip4.address]
+    XDEBUG_CONFIG: remote_host=192.168.1.100
 ```
 
-If that worked, skip to "So what now?"
+If that worked, skip to "So what now?" Otherwise you can try the next idea, but I have not had luck with that yet.
 
 ---
 
@@ -77,8 +72,8 @@ Here's my launch.json for every project in VS Code for demonstrative purposes:
 			"type": "php",
 			"request": "launch",
 			"port": 9000,
-            "localSourceRoot": "${workspaceRoot}",
-            "serverSourceRoot": "/var/www/html"
+			"localSourceRoot": "${workspaceRoot}/html",
+			"serverSourceRoot": "/var/www/html"
 		}
 	]
 }
