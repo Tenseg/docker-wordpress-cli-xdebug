@@ -1,9 +1,10 @@
 # Adds xDebug support to Conetix's docker-wordpress-wp-cli
-# Docker Hub: https://registry.hub.docker.com/u/johnrom/docker-wordpress-wp-cli-xdebug/
-# Github Repo: https://github.com/johnrom/docker-wordpress-wp-cli-xdebug
+# Adds tcpdump support to Johnrom's docker-wordpress-wp-cli-xdebug
+# Docker Hub: https://hub.docker.com/r/eceleste/docker-wordpress-wp-cli-xdebug/
+# Github Repo: https://github.com/efc/docker-wordpress-wp-cli-xdebug
 
 FROM wordpress:latest
-MAINTAINER web@johnrom.com
+MAINTAINER efc@clst.org
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y sudo less
