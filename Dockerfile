@@ -8,6 +8,9 @@ MAINTAINER web@johnrom.com
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y sudo less
 
+# Add tcpdump to our wordpress container for debugging
+RUN apt-get update &&  apt-get -y -q install tcpdump
+
 # Add WP-CLI
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
