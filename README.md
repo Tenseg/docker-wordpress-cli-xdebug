@@ -1,6 +1,6 @@
-# docker-wordpress-xdebug
+# docker-wordpress-cli-xdebug
 
-This is an image based off of [Conetix's docker-wordpress-wp-cli](https://github.com/conetix/docker-wordpress-wp-cli), forked from [Johnrom's docker-wordpress-wp-cli-xdebug](https://github.com/johnrom/docker-wordpress-wp-cli-xdebug), and then simplified. Roundabout, but thanks to all along the way!
+This is an image based off of [Conetix's docker-wordpress-wp-cli](https://github.com/conetix/docker-wordpress-wp-cli), forked from [Johnrom's docker-wordpress-wp-cli-xdebug](https://github.com/johnrom/docker-wordpress-wp-cli-xdebug), and then adding xdebug. Roundabout, but thanks to all along the way!
 
 This repository adds xDebug support to the WordPress container for Docker.
 
